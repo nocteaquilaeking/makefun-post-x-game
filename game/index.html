@@ -180,11 +180,13 @@ function drawHUD() {
 
 function drawCenter(lines, y0) {
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  lines.forEach((ln, i) => {
+  let y = y0;
+  for (const ln of lines) {
     ctx.font = ln.font;
     ctx.fillStyle = ln.color;
-    ctx.fillText(ln.text, W / 2, y0 + i * ln.gap);
-  });
+    ctx.fillText(ln.text, W / 2, y);
+    y += ln.gap;
+  }
 }
 
 function update(dt) {
@@ -284,7 +286,7 @@ function render(t) {
       { text: 'STAR CATCHER', font: 'bold 52px system-ui, sans-serif', color: '#ffe9a8', gap: 76 },
       { text: 'a little ghost, a night sky,', font: '26px system-ui, sans-serif', color: '#fff', gap: 40 },
       { text: 'one prompt', font: '26px system-ui, sans-serif', color: '#fff', gap: 66 },
-      { text: 'catch ★  dodge ☄', font: 'bold 30px system-ui, sans-serif', color: '#ffb3c6', gap: 52 },
+      { text: 'catch ★ — dodge meteors', font: 'bold 30px system-ui, sans-serif', color: '#ffb3c6', gap: 52 },
       { text: '60 seconds · 3 lives', font: '24px system-ui, sans-serif', color: '#cfc4ff', gap: 80 },
       { text: demo ? 'demo mode — watch it play' : 'press SPACE or tap to start',
         font: 'bold 26px system-ui, sans-serif', color: '#9df2c0', gap: 40 },
